@@ -30,7 +30,7 @@ def gen_terrain():
 
     for i in range(1, LARGEUR, COTE):
         for j in range(1, HAUTEUR, COTE):
-            Cells.append([i, j, rd.choice(COULEURS), 0])
+            Cells.append([i, j, 0])
     for n in range(len(Cells)):
           if Cells[n][1] == HAUTEUR/2 - COTE/2 + 1:
                terrain.create_rectangle(Cells[n][0], Cells[n][1], Cells[n][0]+COTE, Cells[n][1]+COTE, fill="white")

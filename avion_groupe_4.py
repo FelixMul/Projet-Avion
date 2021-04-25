@@ -22,6 +22,9 @@ COTE = 40 # Taille du côté, doit être un diviseur commun de la largeur et de 
 COULEURS = ["white","grey"]
 Places = []
 Couloir = []
+Passagers = []
+Places_dispo = []
+
 
 """ Crée liste de listes où nous avons pour chaque passager
 des coordonnées (endroit où il est) et une destination (endroit où il va)
@@ -34,6 +37,7 @@ def gen_terrain():
     contient les coordonnées de chaques cellules du couloir et ses couleurs et la liste Places 
     contient les coordonnées des places disponibles"""
 
+    global Places_dispo
     global Couloir
     global Places
     terrain.delete("all")
@@ -47,17 +51,20 @@ def gen_terrain():
                 terrain.create_rectangle(i, j, i+COTE, j+COTE, fill="grey")
                 Places.append([i, j, "grey"])
                 
+    Places_dispo = cp.deepcopy(Places)
                 
 #Cette fonction serve a passer a une nouvelle etape. Elle cree un nouveau passager si la parcelle d'entree est 
 #disponible et il reste des places libres. Elle sert aussi a deplacer les passagers dans l'avion.
 def nouvelle_etape():
     global Passagers
+    global Places_dispo
     #boucle qui deplace chaque passagers vers sa place.
-    if len(Places) > 0 and Couloir[0][2] == "white":
-        destination = rd.choice(Places)
-        Places.remove(destination)
+    if len(Places_dispo) > 0 and Couloir[0][2] == "white":
+        destination = rd.choice(Places_dispo)
+        Places_dispo.remove(destination)
         Passagers.append([Couloir[0][0], Couloir[0][1], destination[0], destination[1], rd.randint(0, 2)])
-        
+        print(destination)
+
                 
                 
                 

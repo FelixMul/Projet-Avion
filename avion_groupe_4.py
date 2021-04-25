@@ -13,13 +13,18 @@
 import tkinter as tk
 import random as rd
 import copy as cp
+
+
 #Définir COULEURS, HAUTEUR, LARGEUR, CÔTÉ
-
-
 HAUTEUR = 280
 LARGEUR = 1200
 COTE = 40 # Taille du côté, doit être un diviseur commun de la largeur et de la hauteur
 COULEURS = ["white","grey"]
+
+""" Créer liste de listes où nous avons pour chaque passager
+des coordonnées (endroit où il est) et une destination (endroit où il va)
+ainsi qu'un nombre de bagage tiré aléatoirement entre 1 et 2"""
+liste = [ ]
 
 def gen_terrain():
     """Fonction permettant de générer le terrain. La liste Cells contient les coordonnées de chaques cellules ainsi que leurs couleurs respective, leur DUREE_FEU et DUREE_CENDRE"""

@@ -33,8 +33,8 @@ Places_dispo = [] #Liste des places libres [[x, y], []]
 Passagers = [ ]
 
 def gen_terrain():
-    #Fonction permettant de générer le terrain: 
-    #les listes Couloir et Places_dispo.
+    """Fonction permettant de générer le terrain: 
+    les listes Couloir et Places_dispo."""
 
     global Places_dispo
     global Couloir
@@ -92,8 +92,8 @@ def nouvelle_etape():
 def move():
     
     global Passagers
-    # Sort de la liste Passagers (plus grand x au début) -> mouvement de gauche a droite pour eviter les blocages
-    # Et plus grand y au debut au cas on a plusieurs passagers dans la meme rangée
+    """ Sort de la liste Passagers (plus grand x au début) -> mouvement de gauche a droite pour eviter les blocages
+    Et plus grand y au debut au cas on a plusieurs passagers dans la meme rangée"""
     Passagers = sorted(sorted(Passagers, key = lambda x : x[0], reverse = True), key = lambda x : x[1], reverse = True)
     
     for i in Passagers:

@@ -17,11 +17,12 @@ from operator import *
 
 
 #Définir COULEURS, HAUTEUR, LARGEUR, CÔTÉ
-HAUTEUR = 280
-LARGEUR = 800
-COTE = 40 # Taille du côté d'une parcelle, doit être un diviseur commun de la largeur et de la hauteur
-Couloir = [] #liste qui decrit les cellules du couloir [x, y]
-Places_dispo = [] #Liste des places libres [x, y]
+Nombre_de_rangées = 15 #vous pouvez indiquer le nombre de rangées que vous voulez voir, mais au dela de 20 votre ordinateur peut vous poser probleme
+HAUTEUR = COTE  * 7 #nous devont avoir streictement 7 lignes. 6 lignes pour les places et 1 pour le couloir
+LARGEUR = Nombre_de_rangées * COTE
+COTE = 40 # Taille du côté d'une parcelle
+Couloir = [] #liste qui decrit les cellules du couloir [[x, y], []]
+Places_dispo = [] #Liste des places libres [[x, y], []]
 
 
 
@@ -77,10 +78,7 @@ def nouvelle_etape():
     #a la fin de l'etape nous allons dessiner l'avion et ses passagers
     for i in Couloir:
         terrain.create_rectangle(i[0] * COTE + 1, i[1] * COTE + 1 , i[0] * COTE + 1 +COTE, i[1] * COTE + 1 +COTE, fill="white")
-    
-    for i in Places_dispo:
-        terrain.create_rectangle(i[0] * COTE + 1, i[1] * COTE + 1 , i[0] * COTE + 1 +COTE, i[1] * COTE + 1 +COTE, fill="gray")
-    
+     
     for i in Passagers:
         if i[4] == 1:
             terrain.create_oval(i[0] * COTE + 1, i[1] * COTE + 1 , i[0] * COTE + 1 +COTE, i[1] * COTE + 1 +COTE, fill="coral1")
